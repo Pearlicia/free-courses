@@ -1,0 +1,96 @@
+<ion-split-pane contentId="content">
+  <ion-menu contentId="content" menuId="first">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title><img src="../../assets/alogo.png" /></ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list lines="none">
+        <ion-menu-toggle auto-hide="false" menu="first">
+
+          <ion-item routerLink="/tabs/home/courses" routerDirection="root"
+              routerLinkActive="active-item">
+              <ion-icon slot="start" name="home"></ion-icon>
+          <ion-label>
+            Home
+          </ion-label>
+        </ion-item>
+
+
+          <ion-item *ngIf="isAdmin" routerLink="/tabs/home/create-blog" routerDirection="root"
+                routerLinkActive="active-item">
+                <ion-icon slot="start" name="add"></ion-icon>
+            <ion-label>
+              Create course
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+       </ion-list>
+
+        <ion-list lines="none">
+          <!-- <ion-list-header>
+            General
+          </ion-list-header> -->
+
+          <ion-menu-toggle autoHide="false">
+
+            <ion-item routerLink="/tabs/home/privacy" routerDirection="root"
+                  routerLinkActive="active-item">
+                  <ion-icon slot="start" name="aperture"></ion-icon>
+              <ion-label>
+                Privacy Policy
+              </ion-label>
+            </ion-item>
+
+            <ion-item routerLink="/tabs/home/terms" routerDirection="root"
+                  routerLinkActive="active-item">
+                  <ion-icon slot="start" name="alert"></ion-icon>
+              <ion-label>
+                Terms and Conditions
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list lines="none">
+          <!-- <ion-list-header>
+            Account
+          </ion-list-header> -->
+
+          <ion-menu-toggle autoHide="false">
+              <ion-item routerLink="/tabs/home/login" routerDirection="root"
+                  routerLinkActive="active-item">
+                  <ion-icon slot="start" name="log-in"></ion-icon>
+              <ion-label>
+                Login
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/tabs/home/register" routerDirection="root"
+                  routerLinkActive="active-item">
+                  <ion-icon slot="start" name="person-add"></ion-icon>
+              <ion-label>
+                Register
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+      </ion-list>
+
+    </ion-content>
+    <ion-footer>
+      <ion-button slot="end" *ngIf="afAuth.auth.currentUser" (click)="signOut()">Sign Out</ion-button>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-router-outlet id="content"></ion-router-outlet>
+</ion-split-pane>
+
+
+
+
+  

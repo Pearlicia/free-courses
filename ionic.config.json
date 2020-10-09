@@ -1,0 +1,7 @@
+{
+  "name": "npp-blank",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

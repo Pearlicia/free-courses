@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "npowa-b3317": {
+      "hosting": {
+        "app": [
+          "npowa-b3317"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wareproject-10af2"
+  }
+}

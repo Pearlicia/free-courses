@@ -1,0 +1,52 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+  
+  .fake-skeleton {
+    width: 60%;
+  }
+
+  .course-card {
+    margin: 20px 10px;
+}
+
+.course-actions {
+    text-align: center;
+    margin-left: -44.5px;
+}
+
+mat-card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .main-image{
+    margin:10 0px;
+  }
+
+  .card-img{
+    max-height: 50%;
+
+  }
+  
+  .example-header-image {
+    background-image: url('../../../assets/udemy.jpg');
+    background-size: cover;
+  }
+  
+  .mat-raised-button{
+    border-radius: 48%;
+  }
+
+  ion-icon {
+    font-size: 20px;
+    color: blue;
+  }

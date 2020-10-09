@@ -1,0 +1,21 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>popover</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content ion-padding>
+  <ion-grid *ngFor="let blog of blogs">
+    <ion-row>
+      <ion-col>{{blog.coupon}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>h
+        <ion-button expand="block" color="danger" (click)="closePopover()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

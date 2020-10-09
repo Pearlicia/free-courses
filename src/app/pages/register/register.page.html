@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first">
+    </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <ion-item lines="none">
+    <ion-label position="stacked">First name</ion-label>
+    <ion-input placeholder="John" formControlName="first_name"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Last name</ion-label>
+    <ion-input placeholder="Doe" formControlName="last_name"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+
+
+  <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+  color="primary" [disabled]="!registerForm.valid">
+<ion-icon name="checkmark" slot="end"></ion-icon>
+Register
+</ion-button>
+</form>
+</ion-content>
