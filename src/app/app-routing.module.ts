@@ -5,10 +5,15 @@ import { UserService } from './services/user.service';
 
 const routes: Routes = [
    //{ path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     
+  // },
+
+  {
+    path:'',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',

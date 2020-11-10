@@ -24,6 +24,8 @@ export class CoursesPage implements OnInit {
   user: any;
   p: number = 1;
 
+  selected = 'Free Courses';
+
   blogs: Blog[];
   blogs2: Blog[];
   searchTerm = '';
@@ -65,6 +67,17 @@ export class CoursesPage implements OnInit {
 
   }
 
+  segmentChanged(e) {
+    this.blogService.getBlogs().subscribe(res => {
+      this.blogs = res;
+      this.blogs2 = this.blogs;
+      this.blogs.sort((a, b) => {
+        return b.createdAt - a.createdAt
+      })
+    }); 
+      
+  }
+
  
 
   showAdmobBannerAds(){
@@ -72,7 +85,7 @@ export class CoursesPage implements OnInit {
       id: 'ca-app-pub-2349614409429702/3850589521',
       isTesting: false,
       autoShow: true,
-      bannerAtTop: true
+      bannerAtTop: false
      };
      this.admobFree.banner.config(bannerConfig);
      

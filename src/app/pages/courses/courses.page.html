@@ -10,6 +10,16 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selected" class="ion-padding-top ion-padding-bottom">
+    <ion-segment-button value="free courses">
+      <ion-label>Free Courses</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="opportunities">
+      <ion-label>Opportunities</ion-label>
+    </ion-segment-button>
+  </ion-segment> 
+
     <mat-card class="course-card mat-elevation-z10"
     *ngFor="let blog of blogs">
     
