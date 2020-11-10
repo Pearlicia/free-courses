@@ -15,6 +15,7 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 import { AuthService } from "../../services/auth.service";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { blogSubjects } from '../../../assets/data/category';
 
 
 
@@ -36,9 +37,11 @@ export class CreateBlogPage implements OnInit {
   public blogForm: FormGroup;
   cordova: boolean;
   blogTitle: string;
+  category: string;
   createdAt: number;
   selectedFile: any;
   image;
+  public blogSubjects = blogSubjects;
 
   // @ViewChild('blogSlider', {static: true}) blogSlider;
 
@@ -59,6 +62,7 @@ export class CreateBlogPage implements OnInit {
     this.blogForm = this.formBuilder.group({
       subject: ['', Validators.compose([ Validators.required])],
       coupon: ['', Validators.compose([ Validators.required])],
+      category: ['', Validators.required],
       url: ['', Validators.compose([ Validators.required])],
       summary: ['', Validators.compose([ Validators.required])],
       imageUrl: ['', Validators.required],
@@ -118,6 +122,7 @@ export class CreateBlogPage implements OnInit {
       createdAt: this.createdAt,
       subject: formVal.subject,
       coupon: formVal.coupon,
+      category: formVal.category,
       url: formVal.url,
       summary: formVal.summary,
       body: formVal.body,
@@ -133,7 +138,7 @@ export class CreateBlogPage implements OnInit {
 
     this.blogService.createBlog(this.blog).then(() => {
        loading.dismiss();
-       this.router.navigate(['/tabs/home/courses'])
+       this.router.navigate(['/home/courses'])
     });
     
   }

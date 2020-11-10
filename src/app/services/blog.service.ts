@@ -33,6 +33,10 @@ export class BlogService {
      return this.blogs;
    }
 
+   getBlogCat(){
+     
+   }
+
    getBlog(id) {
      return this.blogsCollection.doc<Blog>(id).valueChanges();
    } 

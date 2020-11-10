@@ -42,6 +42,16 @@
     </ion-item>
 
     <ion-item>
+      <ion-label position="floating">Category</ion-label>
+      <ion-select  formControlName="category" >
+      <span *ngFor="let category of blogSubjects; let i=index;">
+          <ion-select-option checked="true" *ngIf="i==0">{{category.name}}</ion-select-option>
+          <ion-select-option *ngIf="i>0" >{{category.name}}</ion-select-option>
+      </span>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="stacked">Upload Image:</ion-label>
       <ion-input type="file" formControlName = "file" (change)="chooseFile($event)"></ion-input>
     </ion-item>

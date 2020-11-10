@@ -12,13 +12,8 @@ export interface Blog {
     imageUrl: any;
     file: any;
     body: string;
-    location?: string;
-    comments?: [{
-        author: string;
-        message: string;
-        timeStamp: number;
-        likes: number;
-    }]; 
+    category: string;
+    
 
 
 }
