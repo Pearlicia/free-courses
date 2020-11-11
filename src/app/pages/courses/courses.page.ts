@@ -5,12 +5,13 @@ import { AuthService } from "../../services/auth.service";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BlogService } from '../../services/blog.service';
 import { Blog } from '../../interfaces/blog';
-import { ModalController, PopoverController, Platform } from '@ionic/angular';
+import { ModalController, IonList, PopoverController, Platform } from '@ionic/angular';
 import { PopoverPage } from '../popover/popover.page';
 import { CouponPage } from '../coupon/coupon.page';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
-
+import { NavigationExtras, Router } from '@angular/router';
+import { FiltercategoryPage } from '../filtercategory/filtercategory.page';
 
 
 
@@ -28,6 +29,7 @@ export class CoursesPage implements OnInit {
 
   blogs: Blog[];
   blogs2: Blog[];
+  allBlogs: Blog[];
   searchTerm = '';
   sentTimestamp: Date;
   blogAuthor: any;
@@ -39,6 +41,7 @@ export class CoursesPage implements OnInit {
     private db: AngularFirestore, 
     private auth: AuthService,
     private platform: Platform,
+    private router: Router,
     public afAuth: AngularFireAuth,
     private socialSharing: SocialSharing,
     private admobFree: AdMobFree,
@@ -59,6 +62,7 @@ export class CoursesPage implements OnInit {
   ngOnInit() {
     this.blogService.getBlogs().subscribe(res => {
       this.blogs = res;
+      this.allBlogs = res;
       this.blogs2 = this.blogs;
       this.blogs.sort((a, b) => {
         return b.createdAt - a.createdAt
@@ -67,17 +71,14 @@ export class CoursesPage implements OnInit {
 
   }
 
-  segmentChanged(e) {
-    this.blogService.getBlogs().subscribe(res => {
-      this.blogs = res;
-      this.blogs2 = this.blogs;
-      this.blogs.sort((a, b) => {
-        return b.createdAt - a.createdAt
-      })
-    }); 
-      
+  open(blog) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        blogs: blog
+      }
+    };
+    this.router.navigate(['/blog/details'], navigationExtras);
   }
-
  
 
   showAdmobBannerAds(){
@@ -122,16 +123,31 @@ export class CoursesPage implements OnInit {
       }
     }
 
-   
-    // enroll() {
-    //     // Add InAppBrowser for app if want
-    //     this.urllink = this.blogs.forEach((item) => {
-    //       console.log(item.url)
-    //       window.open(item.url, '_blank');
+    async openFilter(e) {
+      const popover = await this.popoverCtrl.create({
+        component: FiltercategoryPage,
+        event: e
+      });
+      await popover.present();
   
-    //     })
-    // }
+      popover.onDidDismiss().then(res => {
+        if (res && res.data) {
+          let selectedName = res.data.selected.name;
+  
+          if (selectedName == 'All') {
+            this.blogs = this.allBlogs;
+          } else {
+            this.blogs = this.allBlogs.filter(blog => {
+              return blog.category == selectedName;
+            });
+          }
+        }
+      })
+    }
+        
 
+   
+    
 
     async openPopover(){
       const popover = await this.popoverController.create({
@@ -143,20 +159,7 @@ export class CoursesPage implements OnInit {
       
     }
 
-    async openCoupon(){
-      const coupon = await this.popoverController.create({
-        component: CouponPage,
-        showBackdrop:false
-      }).then((popoverElement) => {
-        popoverElement.present();
-      });
-    }
-      
-   
-    signOut() {
-      this.afAuth.auth.signOut();
-    }
-  
+    
 
    
   }
