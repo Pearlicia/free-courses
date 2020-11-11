@@ -5,45 +5,28 @@
     </ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openFilter($event)">
+        <ion-icon name="funnel" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selected" class="ion-padding-top ion-padding-bottom">
-    <ion-segment-button value="free courses">
-      <ion-label>Free Courses</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="opportunities">
-      <ion-label>Opportunities</ion-label>
-    </ion-segment-button>
-  </ion-segment> 
-
-    <mat-card class="course-card mat-elevation-z10"
-    *ngFor="let blog of blogs">
-    
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <!-- <mat-card-title [innerHTML]="blog.body"></mat-card-title> -->
-        <mat-card-title>{{blog.subject}}</mat-card-title>
-      </mat-card-header>
-    
-      <img mat-card-image class="card-img" [src]="blog.imageUrl" alt="Course Image">
-    
-      <mat-card-content>
-        
-      </mat-card-content>
-    
-      <mat-card-actions class="course-actions">
-
+  <ion-list>
+    <ion-item button *ngFor="let blog of blogs" (click)="open(blog)">
+      <ion-thumbnail slot="start">
+        <img [src]="blog.imageUrl">
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">
+        <h3>{{blog.subject }}</h3>
+        <p>{{ blog.createdAt | date:'d/M/yyyy' }}</p>
         <a [href]="blog.url" target="_blank"><button mat-button class="mat-raised-button mat-primary">ENROLL</button></a>
-          <button (click)="sShare()" mat-button><ion-icon name=""></ion-icon></button>
-          <!-- name="share-social-outline -->
-          <button mat-button>{{ blog.createdAt | date:'d/M/yyyy'}}</button>
-
-      </mat-card-actions>
-    
-    </mat-card>
-    
+      </ion-label>
+    </ion-item>
+  </ion-list>
+       
 </ion-content>
