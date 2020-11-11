@@ -34,6 +34,14 @@ const routes: Routes = [
         loadChildren: () => import('../pages/abot/abot.module').then( m => m.AbotPageModule)
       },
       {
+        path: 'category',
+        loadChildren: () => import('../pages/category/category.module').then( m => m.CategoryPageModule)
+      },
+      {
+        path: 'blog/details',
+        loadChildren: () => import('../pages/blogitem/blogitem.module').then( m => m.BlogitemPageModule)
+      },
+      {
         path: 'login',
         loadChildren: () => import('../pages/login/login.module').then( m => m.LoginPageModule)
       },

@@ -46,7 +46,7 @@ export class CoursesPage implements OnInit {
     private socialSharing: SocialSharing,
     private admobFree: AdMobFree,
     public modalController: ModalController,
-    public popoverController: PopoverController,
+    public popoverCtrl: PopoverController,
     private blogService: BlogService) { 
       this.afAuth.authState.subscribe(user => {
         if (user) {
@@ -150,7 +150,7 @@ export class CoursesPage implements OnInit {
     
 
     async openPopover(){
-      const popover = await this.popoverController.create({
+      const popover = await this.popoverCtrl.create({
         component: PopoverPage,
         showBackdrop:false
       }).then((popoverElement) => {

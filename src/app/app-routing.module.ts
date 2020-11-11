@@ -25,6 +25,14 @@ const routes: Routes = [
   {
     path: 'filtercategory',
     loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+  },
+  {
+    path: 'blogitem',
+    loadChildren: () => import('./pages/blogitem/blogitem.module').then( m => m.BlogitemPageModule)
   }
    
 ];
