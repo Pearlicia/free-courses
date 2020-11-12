@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { Component, OnInit, Input, OnDestroy, AfterViewInit  } from '@angular/core';
+import { Blog } from '../../interfaces/blog';
+import { ModalController } from '@ionic/angular';
+import { BlogService } from '../../services/blog.service';
+// import { BlogdetailPage } from '../blogdetail/blogdetail.page';
 import { DomSanitizer } from '@angular/platform-browser';
-
-
+import { CoursesPage } from '../courses/courses.page';
 
 @Component({
-  selector: 'app-filtercategory',
-  templateUrl: './filtercategory.page.html',
-  styleUrls: ['./filtercategory.page.scss'],
+  selector: 'app-bloglist',
+  templateUrl: './bloglist.page.html',
+  styleUrls: ['./bloglist.page.scss'],
 })
-export class FiltercategoryPage implements OnInit {
+export class BloglistPage implements OnInit {
+  @Input() blogSubject: any;
+  blogList: any;
+  blogs: Blog[];
 
   categories = [
     { name: 'All', thumb: '../../../assets/img/all.png' },
@@ -23,19 +28,19 @@ export class FiltercategoryPage implements OnInit {
     { name: 'Programming', thumb: '../../../assets/img/progimgp.jpg' }
     
   ];
-  
 
-  constructor(private popoverCtrl: PopoverController,
-    private sanitizer: DomSanitizer) { }
+  constructor(
+    private modalController: ModalController,
+    private blogService: BlogService) { }
 
   ngOnInit() {
   }
 
   select(cat) {
-    this.popoverCtrl.dismiss({selected: cat});
+    ({selected: cat});
   }
 
 
-
+  
 
 }

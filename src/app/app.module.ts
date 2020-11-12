@@ -23,6 +23,9 @@ import { environment } from './../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { FiltercategoryPageModule } from '../app/pages/filtercategory/filtercategory.module';
+import { BloglistPageModule } from '../app/pages/bloglist/bloglist.module';
+import { BlogdetailPageModule } from '../app/pages/blogdetail/blogdetail.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +36,9 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
     AppRoutingModule,
     AngularFireStorageModule,
     MatCardModule,
+    FiltercategoryPageModule,
+    BloglistPageModule,
+    BlogdetailPageModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,

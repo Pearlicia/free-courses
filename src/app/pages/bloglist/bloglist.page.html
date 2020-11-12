@@ -1,0 +1,8 @@
+<ion-list>
+  <ion-item button (click)="select(cat)" *ngFor="let cat of categories">
+    <ion-avatar slot="start">
+      <img [src]="cat.thumb">
+    </ion-avatar> 
+    {{ cat.name }}
+  </ion-item>
+</ion-list> 

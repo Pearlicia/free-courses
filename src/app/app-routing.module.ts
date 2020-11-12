@@ -22,17 +22,14 @@ const routes: Routes = [
     path: 'logout',
     loadChildren: () => import('./pages/logout/logout.module').then( m => m.LogoutPageModule)
   },
+  
   {
-    path: 'filtercategory',
-    loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
+    path: 'bloglist',
+    loadChildren: () => import('./pages/bloglist/bloglist.module').then( m => m.BloglistPageModule)
   },
   {
-    path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
-  },
-  {
-    path: 'blogitem',
-    loadChildren: () => import('./pages/blogitem/blogitem.module').then( m => m.BlogitemPageModule)
+    path: 'blogdetail',
+    loadChildren: () => import('./pages/blogdetail/blogdetail.module').then( m => m.BlogdetailPageModule)
   }
    
 ];
