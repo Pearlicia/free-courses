@@ -1,7 +1,8 @@
 {
   "name": "npp-blank",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
